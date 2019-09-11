@@ -1,23 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      content: "Level up to 5kyu on Code Wars",
+      isCompleted: true
+    },
+    {
+      content: "Get haircut",
+      isCompleted: false
+    },
+    {
+      content: "Build react todo app with hooks",
+      isCompleted: false
+    },
+    {
+      content: "Get foot x-rayed",
+      isCompleted: false
+    }
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="header">
+        <form className="todo-list">
+          <ul>
+            <div className="todo">
+              <div className="checkbox"></div>
+              <input type="text" value="Todo one" />
+            </div>
+          </ul>
+        </form>
       </header>
     </div>
   );
