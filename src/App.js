@@ -22,6 +22,24 @@ function App() {
     }
   ]);
 
+  function handleKeyDown(e, i) {
+    if (e.key === "Enter") {
+      createTodoAtIndex(e, i);
+    }
+  }
+
+  function createTodoAtIndex(e, i) {
+    const newTodos = [...todos];
+    newTodos.splice(i + 1, 0, {
+      content: "",
+      isCompleted: false
+    });
+    setTodos(newTodos);
+    setTimeout(() => {
+      document.forms[0].elements[i + 1].focus();
+    }, 0);
+  }
+
   return (
     <div className="app">
       <header className="header">
@@ -30,7 +48,12 @@ function App() {
             <ul>
               <div className="todo">
                 <div className="checkbox"></div>
-                <input type="text" value={todo.content} />
+                <input
+                  key={i}
+                  type="text"
+                  value={todo.content}
+                  onKeyDown={e => handleKeyDown(e, i)}
+                />
               </div>
             </ul>
           ))}
