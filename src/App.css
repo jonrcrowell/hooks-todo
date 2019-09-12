@@ -31,6 +31,12 @@ body {
 .todo-is-completed .checkbox {
   color: #000;
   background: #fff;
+  font-weight: 800;
+}
+
+.todo-is-completed input {
+  color: gray;
+  text-decoration: line-through;
 }
 
 .checkbox {
@@ -39,7 +45,7 @@ body {
   border-radius: 50%;
   margin-right: 10px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
