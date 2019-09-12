@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -74,25 +73,23 @@ function App() {
       <header className="header">
         <form className="todo-list">
           {todos.map((todo, i) => (
-            <ul>
+            <div
+              key={i}
+              className={`todo ${todo.isCompleted && "todo-is-completed"}`}
+            >
               <div
-                className={`todo ${todo.isCompleted && "todo-is-completed"}`}
+                className={"checkbox"}
+                onClick={() => toggleTodoCompleteAtIndex(i)}
               >
-                <div
-                  className={"checkbox"}
-                  onClick={() => toggleTodoCompleteAtIndex(i)}
-                >
-                  {todo.isCompleted && <span>&#x2716;</span>}
-                </div>
-                <input
-                  key={i}
-                  type="text"
-                  value={todo.content}
-                  onKeyDown={e => handleKeyDown(e, i)}
-                  onChange={e => updateTodoAtIndex(e, i)}
-                />
+                {todo.isCompleted && <span>&#x2716;</span>}
               </div>
-            </ul>
+              <input
+                type="text"
+                value={todo.content}
+                onKeyDown={e => handleKeyDown(e, i)}
+                onChange={e => updateTodoAtIndex(e, i)}
+              />
+            </div>
           ))}
         </form>
       </header>
